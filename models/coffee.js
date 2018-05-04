@@ -1,6 +1,6 @@
 const orm = require('../config/orm');
 
-module.exports.coffee = {
+let coffee = {
     all: (cb) => {
         orm.selectAll('coffee', 
             (res) => {
@@ -24,6 +24,7 @@ module.exports.coffee = {
     } 
 };
 
+module.exports = coffee;
 
 
 

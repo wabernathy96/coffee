@@ -20,9 +20,10 @@ let objToSql = (obj) => {
     return arr.toString();
 };
 
-module.exports.orm = {
+let orm = {
     selectAll: (tableName, cb) => {
-        let queryString = `SELECT * FROM ${tableName};`;
+        let queryString = `SELECT * FROM 
+        ${tableName};`;
 
         con.query(queryString, [tableName], 
             (err, result) => {
@@ -34,7 +35,8 @@ module.exports.orm = {
         );
     },
     insertOne: (tableName, colName, colVals, cb) => {
-        let queryString = `INSERT INTO ${tableName} (${colName.toString()}) VALUES (${printQuestionMarks(colVals.length)};)`;
+        let queryString = `INSERT INTO ${tableName}(${colName.toString()}) VALUES 
+        (${printQuestionMarks(colVals.length)});`;
 
         console.log(queryString);
 
@@ -64,3 +66,5 @@ module.exports.orm = {
         );
     }
 };
+
+module.exports = orm;

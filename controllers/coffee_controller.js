@@ -1,10 +1,10 @@
 const express = require('express');
 const coffee = require('../models/coffee');
 
+
 let router = express.Router();
 
-module.exports.router = () => {
-    get('/', 
+    router.get('/', 
         (req, res) =>{
             coffee.all(
                 (data) => {
@@ -19,7 +19,7 @@ module.exports.router = () => {
         }
     );
 
-    post('/coffee', 
+    router.post('/coffee', 
         (req, res) => {
             coffee.insert(
                 [
@@ -35,7 +35,7 @@ module.exports.router = () => {
         }
     );
 
-    put('/burgers/:id',
+    router.put('/burgers/:id',
         (req, res) => {
             let condition = `ID = ${req.params.id}`;
 
@@ -50,4 +50,5 @@ module.exports.router = () => {
             );
         }
     );
-};
+
+module.exports = router;
