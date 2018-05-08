@@ -1,6 +1,6 @@
 const con = require('./connection');
 
-let printQuestionMarks = (input) => {
+let printQMarks = (input) => {
     let arr = [];
 
     for(let i=0;i<input;i++) {
@@ -14,7 +14,7 @@ let objToSql = (obj) => {
     let arr = [];
 
     for (var key in obj) {
-        arr.push(`${key} = ${obj.key}`)
+        arr.push(`${key} = ${obj[key]}`);
     }
 
     return arr.toString();
@@ -36,7 +36,7 @@ let orm = {
     },
     insertOne: (tableName, colName, colVals, cb) => {
         let queryString = `INSERT INTO ${tableName}(${colName.toString()}) VALUES 
-        (${printQuestionMarks(colVals.length)});`;
+        (${printQMarks(colVals.length)});`;
 
         console.log(queryString);
 
@@ -50,10 +50,8 @@ let orm = {
             }
         );
     },
-    updateOne: (tableName, colVals, cond, cb) => {
-        let queryString = `UPDATE ${tableName} SET ${objToSql(colVals)} WHERE ${condition};`;
-
-        console.log(queryString);
+    updateOne: (tableName, colVal, condition, cb) => {
+        let queryString = `UPDATE ${tableName} SET ${objToSql(colVal)} WHERE ${condition};`;
 
         con.query(queryString, 
             (err, result) => {

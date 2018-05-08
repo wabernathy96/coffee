@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var methodOverride = require('method-override')
 const hbs = require('express-handlebars');
 
 let PORT = process.env.PORT || 5900;
@@ -10,6 +11,10 @@ let app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
+
+// Override methods for html form in order to use put w/o ajax
+// Multiple browser support
+app.use(methodOverride('_method'));
 
 app.use(express.static('public/assets/css'));
 // Serve images for the site

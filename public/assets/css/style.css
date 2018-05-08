@@ -1,0 +1,25 @@
+#newName::-webkit-input-placeholder {
+    text-align: center;
+}
+#newName:-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+}
+#newName::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+}
+#newName:-ms-input-placeholder {  
+    text-align: center; 
+}
+
+h1 {
+    font-family: 'Exo', sans-serif;
+}
+
+.input-field input:focus + label {
+    color: red !important;
+}
+  /* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid red !important;
+    box-shadow: 0 1px 0 0 red !important
+}

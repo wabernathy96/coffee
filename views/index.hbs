@@ -1,3 +1,55 @@
-<h1 class="center-align"> Boosted Brew Coffee </h1>
+<header>
+    <div class="center-align">
+        <img id="mIcon" src="bBunny.jpg" height="200px" width="150px" />
+        <h1 id="mTitle" style="font-family: 'Exo', sans-serif;color: #607d8b">Boosted Brew Coffee</h1>
+    </div>
+</header>
 
-<img class="align-center" src="bBunny.jpg" >
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col m6 left">
+                <h3 class="center-align" style="font-family: 'Exo', sans-serif;color: #90a4ae">Not Drank</h3>
+                {{#each coffee}}
+                    {{#unless this.drank}}
+                        <br>
+                        <div class="center-align">
+                            <form action="/coffee/{{this.id}}?_method=PUT" method="POST">
+                                <button id="coffeeNotDrank"
+                                class="btn waves-effect waves-purple blue" type="submit">PUT
+                                    {{this.coffee_name}}
+                                </button>
+                            </form>
+                        </div>
+                    {{/unless}}
+                {{/each}}
+            </div>
+    
+
+            <div class="col m6 right" >
+                <h3 class="center-align" style="font-family: 'Exo', sans-serif;color: #90a4ae">Drank</h3>
+                {{#each coffee}}
+                    {{#if this.drank}}
+                    <br>
+                        <div class="center-align" id="coffeeDrank">
+                            <button class="btn disabled" type="button">
+                                {{this.coffee_name}}
+                            </button>    
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col m12 center-align">
+                <form action="/coffee" method="POST">
+                    <input type="text" id="newName" name="coffee_name" placeholder="Add a Coffee" />
+                    <button class="btn blue accent-2" type="submit" id="addCoffeeBtn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

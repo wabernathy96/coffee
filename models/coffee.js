@@ -8,15 +8,15 @@ let coffee = {
             }
         );
     },
-    insert: (col, vals, cb) => {
+    insert: (cols, vals, cb) => {
         orm.insertOne('coffee', cols, vals, 
             (res) => {
                 cb(res);
             }
         );
     },
-    update: (colVals, cond, cb) => {
-        orm.updateOne('coffee', colVals, cond, 
+    update: (colVal, condition, cb) => {
+        orm.updateOne('coffee', colVal, condition, 
             (res) => {
                 cb(res);
             }

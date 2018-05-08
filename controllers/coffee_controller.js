@@ -2,9 +2,9 @@ const express = require('express');
 const coffee = require('../models/coffee');
 
 
-let router = express.Router();
+let routes = express.Router();
 
-    router.get('/', 
+    routes.get('/', 
         (req, res) =>{
             coffee.all(
                 (data) => {
@@ -12,14 +12,13 @@ let router = express.Router();
                         coffee:data
                     };
                     
-                    console.log(hbsObj);
-                    res.render('index', hbsObj);
+                 res.render('index', hbsObj);
                 }
             );
         }
     );
 
-    router.post('/coffee', 
+    routes.post('/coffee', 
         (req, res) => {
             coffee.insert(
                 [
@@ -35,15 +34,15 @@ let router = express.Router();
         }
     );
 
-    router.put('/burgers/:id',
+    routes.put('/coffee/:id',
         (req, res) => {
-            let condition = `ID = ${req.params.id}`;
+            let condition = `id = ${req.params.id}`;
 
             coffee.update(
                 {
-                    drank: true
+                    drank: 1
                 },
-                cond,
+                condition,
                 (data) => {
                     res.redirect('/');
                 }
@@ -51,4 +50,4 @@ let router = express.Router();
         }
     );
 
-module.exports = router;
+module.exports = routes;
