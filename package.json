@@ -2,9 +2,10 @@
   "name": "coffee",
   "version": "1.0.0",
   "description": "An app to track coffee sales built through Node.js, Express.js, Handlebars.js, and mySQL",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
