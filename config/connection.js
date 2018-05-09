@@ -1,6 +1,10 @@
 const mysql = require('mysql');
+
+// Create connection var
 let con;
 
+// If jawsDB connection is detected, connect
+// Else connect to local DB
 if (process.env.JAWSDB_URL) {
     con = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -12,6 +16,7 @@ if (process.env.JAWSDB_URL) {
     });
 }
 
+// Connection to server
 con.connect(
     (err) => {
         if (err) {
@@ -22,4 +27,5 @@ con.connect(
     }
 );
 
+// Export connection for use in orm.js
 module.exports = con;
